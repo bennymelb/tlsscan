@@ -11,12 +11,12 @@ result=$(echo -n | openssl s_client -connect $SERVER -tls1 2>&1)
 if [[ "$?" -eq "1" ]] ; then
   if [[ "$result" =~ ":error" ]] ; then
     error=$(echo -n $result | cut -d':' -f6)
-    echo "$protocol is disabled \($error\)"
+    echo "$protocol is disabled ($error)"
   elif [[ "$result" =~ ":errno=" ]] ; then
     error=$(echo -n $result | cut -d' ' -f1)
-    echo "$protocol is disabled \($error\)"
+    echo "$protocol is disabled ($error)"
   else
-    echo "error running the openssl scan \($result\)"
+    echo "error running the openssl scan ($result)"
   fi
 else
   echo "$protocol is enabled"
@@ -30,12 +30,12 @@ result=$(echo -n | openssl s_client -connect $SERVER -tls1_1 2>&1)
 if [[ "$?" -eq "1" ]] ; then
   if [[ "$result" =~ ":error" ]] ; then
     error=$(echo -n $result | cut -d':' -f6)
-    echo "$protocol is disabled \($error\)"
+    echo "$protocol is disabled ($error)"
   elif [[ "$result" =~ ":errno=" ]] ; then
     error=$(echo -n $result | cut -d' ' -f1)
-    echo "$protocol is disabled \($error\)"
+    echo "$protocol is disabled ($error)"
   else
-    echo "error running the openssl scan \($result\)"
+    echo "error running the openssl scan ($result)"
   fi
 else
   echo "$protocol is enabled"
@@ -49,12 +49,12 @@ result=$(echo -n | openssl s_client -connect $SERVER -tls1_2 2>&1)
 if [[ "$?" -eq "1" ]] ; then
   if [[ "$result" =~ ":error" ]] ; then
     error=$(echo -n $result | cut -d':' -f6)
-    echo "$protocol is disabled \($error\)"
+    echo "$protocol is disabled ($error)"
   elif [[ "$result" =~ ":errno=" ]] ; then
     error=$(echo -n $result | cut -d' ' -f1)
-    echo "$protocol is disabled \($error\)"
+    echo "$protocol is disabled ($error)"
   else
-    echo "error running the openssl scan \($result\)"
+    echo "error running the openssl scan ($result)"
   fi
 else
   echo "$protocol is enabled"

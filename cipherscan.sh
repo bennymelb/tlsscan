@@ -13,10 +13,10 @@ echo -n Testing $cipher...
 result=$(echo -n | openssl s_client -cipher "$cipher" -connect $SERVER 2>&1)
 if [[ "$result" =~ ":error:" ]] ; then
   error=$(echo -n $result | cut -d':' -f6)
-  echo "NO \($error\)"
+  echo "NO ($error)"
 elif [[ "$result" =~ ":errno=" ]] ; then
   error=$(echo -n $result | cut -d' ' -f1)
-  echo "NO \($error\)"
+  echo "NO ($error)"
 else
   if [[ "$result" =~ "Cipher is ${cipher}" || "$result" =~ "Cipher    :" ]] ; then
     echo "YES"
